@@ -1,52 +1,15 @@
-import { Component } from 'react';
 import './App.css';
+
+/*경로 지정*/
+import LearningComponent from './components/learning-examples/LearningComponent';
 
 
 function App() {
   return (
     <div className="App">
-      <FirstComponent></FirstComponent>
-      <SecondComponent></SecondComponent>
-      <ThirdComponent/>
-      <FourthComponent></FourthComponent>
+      <LearningComponent/>
     </div>
   );
-}
-
-function FirstComponent(){
-  return (
-    <div className='First Component'>
-      First Component
-    </div>
-  );
-}
-
-function SecondComponent(){
-  return (
-    <div className='Second Component'>
-      Second Component
-    </div>
-  );
-}
-
-class ThirdComponent extends Component{
-    render(){
-    return (
-      <div className='Third Component'>
-        Third Component
-      </div>
-    );
-  }
-}
-
-class FourthComponent extends Component{
-    render(){
-    return (
-      <div className='Fourth Component'>
-        Fourth Component
-      </div>
-    );
-  }
 }
 
 
