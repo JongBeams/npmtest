@@ -11,13 +11,13 @@ import LearingJavaScript from './LearingJavaScript'
 
 export default function LearningComponent() {
   return (
-    <div className="App">
+    <>
       <FirstComponent></FirstComponent>
       <SecondComponent></SecondComponent>
       <ThirdComponent/>
       <FourthComponent></FourthComponent>
       <FifthComponent></FifthComponent>
       <LearingJavaScript/>
-    </div>
+    </>
   );
 }
