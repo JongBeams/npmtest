@@ -3,7 +3,8 @@ import './App.css';
 
 /*경로 지정*/
 //import LearningComponent from './components/learning-examples/LearningComponent';
-import Counter from './components/counter/Counter';
+//import Counter from './components/counter/Counter';
+import TodoApp from './components/todo/TodoApp';
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
       {/* <LearningComponent/> */}
       {/* <PlayingWithProps property1="value1" property2="value2" /> */}
-      <Counter />
+      {/* <Counter /> */}
+      <TodoApp />
     </div>
   );
 }
