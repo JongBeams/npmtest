@@ -25,8 +25,8 @@ function LoginComponent() {
     }
 
     //하드코딩 로그인 임시 확인
-    function handleSubmit() {
-        if (authContext.login(username,password)) {
+    async function handleSubmit() {
+        if (await authContext.login(username,password)) {
             navigate(`/welcome/${username}`)
         }
         else {

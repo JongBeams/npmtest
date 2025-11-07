@@ -10,15 +10,16 @@ import ListTodoComponent from './ListTodoComponent'
 import ErrorComponent from './ErrorComponent'
 import WelcomeComponent from './WelcomeComponent'
 import LoginComponent from './LoginComponent'
+import TodoComponent from './TodoComponent'
 import AuthProvider, { useAuth } from './security/AuthContext'
 
 import './TodoApp.css'
 
-function AuthenticatedRoute({children}) {
-    const authContext =useAuth()
-    if(authContext.isAuthenticated)
+function AuthenticatedRoute({ children }) {
+    const authContext = useAuth()
+    if (authContext.isAuthenticated)
         return children
-    return <Navigate to="/"/>
+    return <Navigate to="/" />
 }
 
 export default function TodoApp() {
@@ -40,14 +41,19 @@ export default function TodoApp() {
                             <AuthenticatedRoute>
                                 <LogoutComponent />
                             </AuthenticatedRoute>
-                            } />
+                        } />
                         <Route path='/todos' element={
                             <AuthenticatedRoute>
                                 <ListTodoComponent />
-                                </AuthenticatedRoute>
-                            } />
+                            </AuthenticatedRoute>
+                        } />
+                        <Route path='/todo/:id' element={
+                            <AuthenticatedRoute>
+                                <TodoComponent />
+                            </AuthenticatedRoute>
+                        } />
 
-                            <Route path='*' element={<ErrorComponent />} />
+                        <Route path='*' element={<ErrorComponent />} />
                     </Routes>
                     <FooterComponent />
                 </BrowserRouter>

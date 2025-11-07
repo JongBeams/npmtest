@@ -22,7 +22,7 @@ function HeaderComponent() {
             <div className="container">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
-                        <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://www.youtube.com/">Youtube</a>
+                        <a className="navbar-brand ms-2 fs-2 fw-bold text-danger" href="https://www.youtube.com/">Youtube</a>
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav">
                                 <li className="nav-item fs-5">
