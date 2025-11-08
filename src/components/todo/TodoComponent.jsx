@@ -8,7 +8,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import moment from 'moment'
 
 function TodoComponent() {
-    const { id } = useParams()
+    //const { id } = useParams()
+    //id값이 문자열이라 -1 숫자와 문자열을 비교함
+    const { id: paramId } = useParams()
+    const id = parseInt(paramId)
 
     const [description, setDescription] = useState('')
     const [targetDate, setTargetDate] = useState('')
@@ -84,7 +87,7 @@ function TodoComponent() {
             error.description = '내용 5자 이상 입력 필요'
         }
 
-        if (values.targetDate === null || values.targetDate === ''||moment(values.targetDate).isValid()) {
+        if (values.targetDate === null || values.targetDate === ''||!moment(values.targetDate).isValid()) {
             error.targetDate = '목표 날짜 입력 필요'
         }
 
@@ -117,7 +120,7 @@ function TodoComponent() {
                                 />
 
                                 <ErrorMessage
-                                    name="targeDate"
+                                    name="targetDate"
                                     component="div"
                                     className="alert alert-warning"
                                 />

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
+import { executeJwtAuthenticationService } from "../api/AuthenticationApiService";
 import {apiClient}from '../api/apiClient'
 
 //Context 생성
@@ -43,25 +43,63 @@ export default function AuthProvider({ children }) {
     // }
 
     //async :  항상 Promise를 반환, await : Promise가 완료될 때까지 기다립니다, Promise : 미래에 완료될 작업
-    async function login(username, password) {
+    //async function login(username, password) {
 
         //btoa - base64 인코딩
-        const baToken = 'Basic ' + window.btoa(username + ":" + password)
+    //     const baToken = 'Basic ' + window.btoa(username + ":" + password)
+    //     console.log(baToken)
+    //     console.log(username)
+    //     console.log(password)
+    //     try {
+    //         const response = await executeBasicAuthenticationService(baToken)
 
-        console.log(baToken)
-        console.log(username)
-        console.log(password)
+    //         if (response.status === 200) {
+    //             setAuthenticated(true)
+    //             setUsername(username)
+    //             setToken(baToken)
+                
+    //             apiClient.interceptors.request.use(
+    //                 (config)=>{
+    //                     console.log('인터셉트 토큰')
+    //                     config.headers.Authorization=baToken
+    //                     return config
+    //                 }
+    //             )
+                
+    //             return true
+    //         }
+    //         else {
+    //             setAuthenticated(false)
+    //             setUsername(null)
+    //             setToken(null)
+    //             return false
+    //         }
+    //     }
+    //     catch (error) {
+    //         setAuthenticated(false)
+    //         setUsername(null)
+    //         setToken(null)
+    //         return false
+    //     }
+
+    // }
+
+
+    async function login(username, password) {
+
         try {
-            const response = await executeBasicAuthenticationService(baToken)
+            const response = await executeJwtAuthenticationService(username,password)
 
             if (response.status === 200) {
+                const jwtToken ='Bearer '+ response.data.token
                 setAuthenticated(true)
                 setUsername(username)
-                setToken(baToken)
+                setToken(jwtToken)
+                
                 apiClient.interceptors.request.use(
                     (config)=>{
                         console.log('인터셉트 토큰')
-                        config.headers.Authorization=baToken
+                        config.headers.Authorization=jwtToken
                         return config
                     }
                 )

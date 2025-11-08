@@ -12,7 +12,7 @@ export const retrieveTodoApi
 = (name,id)=> apiClient.get(`/users/${name}/todos/${id}`)
 
 export const updateTodoApi
-= (name,id,todo)=> apiClient.put(`/users/${name}/todos/${id}`)
+= (name,id,todo)=> apiClient.put(`/users/${name}/todos/${id}`,todo)
 
 export const createTodoApi
 = (name,todo)=> apiClient.post(`/users/${name}/todos`,todo)
